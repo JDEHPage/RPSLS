@@ -21,7 +21,7 @@ class Game extends Component {
 
     setHand(hand){
         this.setState({playerHand: hand})
-        console.log(this.state.playerHand);
+        
         
     }
 

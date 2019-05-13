@@ -2,36 +2,38 @@ import React from 'react';
 
 const Hands = (props) => {
 
-    const allHands = props.hands.map((hand, index) => {
 
+    function allHands(props) {
         if (props.playerHand === null) {
-            return(
-                <div key={index}>
-                     <p className="hand_option" onClick={selectHand.bind(this, hand)} >{hand.name}</p>
-                </div>
-               
-            )
+            return(props.hands.map((hand, index) => {
+                return(
+                    <div key={index}>
+                         <p className="hand_option" onClick={selectHand.bind(this, hand)} >{hand.name}</p>
+                    </div>  
+                ) 
+            }))
         } else {
-
-            console.log("Test!!!!");
-            
+            for (const hand of props.hands) {
+                if (hand.name === props.playerHand.name) {
+                    var index = props.hands.indexOf(hand)
+                    return(
+                        <div key={index}>
+                             <p className="hand_option" >{hand.name}</p>
+                        </div> 
+                    )
+                }   
+            }
         }
-
-        
-    })
+    }
 
     function selectHand(hand) {
         props.setHand(hand)  
     }
     
-    
-    // selectHand = (hand) => {
-    //     console.log(hand);
-    // }
 
     return(
         <div>
-            {allHands}
+            {allHands(props)}
         </div>
         
     )
