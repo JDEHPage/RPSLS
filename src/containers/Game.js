@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CompSelect from '../components/Hands'
+import Hands from '../components/Hands'
 // import PlayerSelect from '../components/PlayerSelect'
 
 class Game extends Component {
@@ -16,10 +16,13 @@ class Game extends Component {
                 {name: 'spock', win: ['rock', 'scissors']}
             ]
         }
+        this.setHand = this.setHand.bind(this)
     }
 
-    selectHand(hand){
-
+    setHand(hand){
+        this.setState({playerHand: hand})
+        console.log(this.state.playerHand);
+        
     }
 
 
@@ -28,7 +31,7 @@ class Game extends Component {
     
             <div>
                 <p>Hello World</p>
-                <Hands hands={this.state.hands}></Hands>
+                <Hands hands={this.state.hands} playerHand={this.state.playerHand} setHand={this.setHand}></Hands>
             </div>
         
         )
