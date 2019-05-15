@@ -17,7 +17,6 @@ const PlayerHand = (props) => {
     
 
     return(
-
         <div className="player-hand"> 
             <p>PlayerHand</p>
             <div>

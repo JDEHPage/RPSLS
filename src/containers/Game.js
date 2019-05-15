@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PlayerHand from '../components/PlayerHand'
 import CompHand from '../components/CompHand'
+import Results from '../components/Results'
 
 
 class Game extends Component {
@@ -30,21 +31,21 @@ class Game extends Component {
             ],
 
             playerHand: [],
-            compHand: []
+            compHand: [],
+            winMessage: null,
+            playerScore: 0,
+            compScore: 0
             
         }
         this.selectHand = this.selectHand.bind(this) 
+        this.calcWin = this.calcWin.bind(this)
+        this.playAgain = this.playAgain.bind(this)
+        this.resetGame = this.resetGame.bind(this)
     }
 
     componentDidMount() {
-       this.setState({playerHand: this.state.hands})
-
-       
-    //    this.selectHand("rock")
-        
-
-        
-   }
+       this.setState({playerHand: this.state.hands})   
+    }
 
    selectHand(hand){
         this.setState({playerHand: [hand]}) 
@@ -53,8 +54,49 @@ class Game extends Component {
             randomHand = this.state.hands[Math.floor(Math.random() * this.state.hands.length)];  
         }
         this.setState({compHand: randomHand})
+        this.calcWin(hand, randomHand)
    }
 
+
+   calcWin(pHand, cHand) {
+        // console.log(pHand.win);
+        // console.log(cHand.name);
+        var winner = ""
+        var message = ""
+        for (const key in pHand.message) {
+            if (cHand.name === key) {
+                message = pHand.message[key] 
+                winner = "player"  
+            }
+        }
+
+        for (const key in cHand.message) {
+            if (pHand.name === key) {
+                message = cHand.message[key]  
+                winner = "comp" 
+            }
+        }
+        console.log(message);
+        this.setState({winMessage: message})
+
+        if (winner === "player") {
+            this.setState(prevState => {
+                return {playerScore: prevState.playerScore + 1}
+             })
+        } else if(winner === "comp"){
+            this.setState(prevState => {
+                return {compScore: prevState.compScore + 1}
+             })
+        }
+   }
+
+   playAgain(){
+        this.setState({playerHand: this.state.hands, winMessage: null}) 
+   }
+
+   resetGame(){
+        this.setState({playerHand: this.state.hands, winMessage: null, playerScore: 0, compScore: 0}) 
+   }
    
 
 
@@ -74,6 +116,23 @@ class Game extends Component {
             <CompHand symbol="Paper"
             compHand={this.state.compHand}
             />
+            <Results
+            winMessage={this.state.winMessage}
+            playerScore={this.state.playerScore}
+            compScore={this.state.compScore}
+            />
+            <div>
+                <button onClick={this.playAgain}>
+                   Play Again
+                 </button>
+            </div>
+            
+            <div>
+                <button onClick={this.resetGame}>
+                    Reset Game
+                </button>
+            </div>
+            
 
          </div>
         
