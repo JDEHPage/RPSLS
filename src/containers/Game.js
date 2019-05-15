@@ -10,33 +10,52 @@ class Game extends Component {
             hands:[
                 {name: 'rock', 
                 message: {'lizard': 'Rock crushes Lizard', 'scissors': 'Rock crushes Scissors'},
-                win: ['lizard', 'scissors'] },
+                win: ['lizard', 'scissors']},
 
                 {name: 'paper', 
                 message: {'rock': 'Paper covers Rock ', 'spock': 'Paper disproves Spock'}, 
-                win: ['rock', 'spock'] },
+                win: ['rock', 'spock']},
 
                 {name: 'scissors', 
                 message: {'lizard': 'Scissors decapitates Lizard ', 'paper': 'Scissors cuts Paper'}, 
-                win: ['lizard', 'paper'] },
+                win: ['lizard', 'paper']},
 
                 {name: 'lizard', 
                 message: {'paper': 'Lizard eats Paper', 'spock': 'Lizard poisons Spock'}, 
-                win: ['paper', 'spock'] },
+                win: ['paper', 'spock']},
 
                 {name: 'spock', 
                 message: {'rock': 'Spock vaporizes Rock', 'scissors': 'Spock smashes Scissors'}, 
-                win: ['rock', 'scissors'] }
+                win: ['rock', 'scissors']}
             ],
-            playerHand: []
+
+            playerHand: [],
+            compHand: []
             
         }
-        // this.setPlayerHand = this.setPlayerHand.bind(this)   
+        this.selectHand = this.selectHand.bind(this) 
     }
 
     componentDidMount() {
        this.setState({playerHand: this.state.hands})
+
+       
+    //    this.selectHand("rock")
+        
+
+        
    }
+
+   selectHand(hand){
+        this.setState({playerHand: [hand]}) 
+        var randomHand = hand
+        while (randomHand.name === hand.name) {
+            randomHand = this.state.hands[Math.floor(Math.random() * this.state.hands.length)];  
+        }
+        this.setState({compHand: randomHand})
+   }
+
+   
 
 
     
@@ -46,8 +65,15 @@ class Game extends Component {
            
          <div className="game">
 
-            <PlayerHand  symbol="Rock" playerHand={this.state.playerHand} hands={this.state.hands} />
-            <CompHand symbol="Paper"/>
+            <PlayerHand  symbol="Rock" 
+            playerHand={this.state.playerHand} 
+            hands={this.state.hands} 
+            selectHand={this.selectHand}
+            compHand={this.state.compHand}
+            />
+            <CompHand symbol="Paper"
+            compHand={this.state.compHand}
+            />
 
          </div>
         

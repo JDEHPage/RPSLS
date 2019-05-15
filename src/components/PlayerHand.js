@@ -2,23 +2,27 @@ import React from 'react';
 
 const PlayerHand = (props) => {
 
-    const allHands = props.hands.map((hand, index) => {
+    const setHand = (hand) => {
+        if (props.playerHand.length > 1) {
+            props.selectHand(hand)
+        }
+    }
+
+    const allHands = props.playerHand.map((hand, index) => {
         return(
-          <p key={index}>{hand.name} </p>
-        );
+            <p key={index} onClick={setHand.bind(this, hand)}>{hand.name} </p>
+          ); 
       })
 
+    
 
     return(
 
         <div className="player-hand"> 
             <p>PlayerHand</p>
-            <p>{props.symbol}</p>
             <div>
                 {allHands}
             </div>
-        
-        
         </div>
     )
 
