@@ -1,38 +1,55 @@
 import React, { Component } from "react";
-import Hands from '../components/Hands'
-// import PlayerSelect from '../components/PlayerSelect'
+import PlayerHand from '../components/PlayerHand'
+import CompHand from '../components/CompHand'
+
 
 class Game extends Component {
     constructor(props){
         super(props);
-        this.state = {
-            playerHand: null,
-            compHand: null,
+        this.state = {   
             hands:[
-                {name: 'rock', win: ['lizard', 'scissors']},
-                {name: 'paper', win: ['rock', 'spock']},
-                {name: 'scissors', win: ['lizard', 'paper']},
-                {name: 'lizard', win: ['paper', 'spock']},
-                {name: 'spock', win: ['rock', 'scissors']}
-            ]
+                {name: 'rock', 
+                message: {'lizard': 'Rock crushes Lizard', 'scissors': 'Rock crushes Scissors'},
+                win: ['lizard', 'scissors'] },
+
+                {name: 'paper', 
+                message: {'rock': 'Paper covers Rock ', 'spock': 'Paper disproves Spock'}, 
+                win: ['rock', 'spock'] },
+
+                {name: 'scissors', 
+                message: {'lizard': 'Scissors decapitates Lizard ', 'paper': 'Scissors cuts Paper'}, 
+                win: ['lizard', 'paper'] },
+
+                {name: 'lizard', 
+                message: {'paper': 'Lizard eats Paper', 'spock': 'Lizard poisons Spock'}, 
+                win: ['paper', 'spock'] },
+
+                {name: 'spock', 
+                message: {'rock': 'Spock vaporizes Rock', 'scissors': 'Spock smashes Scissors'}, 
+                win: ['rock', 'scissors'] }
+            ],
+            playerHand: []
+            
         }
-        this.setHand = this.setHand.bind(this)
+        // this.setPlayerHand = this.setPlayerHand.bind(this)   
     }
 
-    setHand(hand){
-        this.setState({playerHand: hand})
-        
-        
-    }
+    componentDidMount() {
+       this.setState({playerHand: this.state.hands})
+   }
 
 
+    
     render(){
         return(
     
-            <div>
-                <p>Hello World</p>
-                <Hands hands={this.state.hands} playerHand={this.state.playerHand} setHand={this.setHand}></Hands>
-            </div>
+           
+         <div className="game">
+
+            <PlayerHand  symbol="Rock" playerHand={this.state.playerHand} hands={this.state.hands} />
+            <CompHand symbol="Paper"/>
+
+         </div>
         
         )
     }
