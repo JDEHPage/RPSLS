@@ -8,12 +8,6 @@ const Results = (props) => {
             <div>
                 {props.winMessage}
             </div>
-            <div>
-                <p>Player</p>
-                <p>{props.playerScore}</p>
-                <p>Comp</p>
-                <p>{props.compScore}</p>
-            </div>
         </div>
     )
 }

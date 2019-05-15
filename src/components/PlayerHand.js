@@ -1,4 +1,6 @@
 import React from 'react';
+import './PlayerHand.css';
+
 
 const PlayerHand = (props) => {
 
@@ -10,8 +12,8 @@ const PlayerHand = (props) => {
 
     const allHands = props.playerHand.map((hand, index) => {
         return(
-            <p key={index} onClick={setHand.bind(this, hand)}>{hand.name} </p>
-          ); 
+            <img key={index} className="hands" src={require(`../assets/${hand.name}.png`)} alt={hand.name} onClick={setHand.bind(this, hand)}/>
+        ); 
       })
 
     
@@ -19,7 +21,7 @@ const PlayerHand = (props) => {
     return(
         <div className="player-hand"> 
             <p>PlayerHand</p>
-            <div>
+            <div >
                 {allHands}
             </div>
         </div>

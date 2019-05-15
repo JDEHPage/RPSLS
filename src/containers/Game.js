@@ -10,28 +10,23 @@ class Game extends Component {
         this.state = {   
             hands:[
                 {name: 'rock', 
-                message: {'lizard': 'Rock crushes Lizard', 'scissors': 'Rock crushes Scissors'},
-                win: ['lizard', 'scissors']},
+                message: {'lizard': 'Rock crushes Lizard', 'scissors': 'Rock crushes Scissors'} },
 
                 {name: 'paper', 
-                message: {'rock': 'Paper covers Rock ', 'spock': 'Paper disproves Spock'}, 
-                win: ['rock', 'spock']},
+                message: {'rock': 'Paper covers Rock ', 'spock': 'Paper disproves Spock'} },
 
                 {name: 'scissors', 
-                message: {'lizard': 'Scissors decapitates Lizard ', 'paper': 'Scissors cuts Paper'}, 
-                win: ['lizard', 'paper']},
+                message: {'lizard': 'Scissors decapitates Lizard ', 'paper': 'Scissors cuts Paper'} },
 
                 {name: 'lizard', 
-                message: {'paper': 'Lizard eats Paper', 'spock': 'Lizard poisons Spock'}, 
-                win: ['paper', 'spock']},
+                message: {'paper': 'Lizard eats Paper', 'spock': 'Lizard poisons Spock'} },
 
                 {name: 'spock', 
-                message: {'rock': 'Spock vaporizes Rock', 'scissors': 'Spock smashes Scissors'}, 
-                win: ['rock', 'scissors']}
+                message: {'rock': 'Spock vaporizes Rock', 'scissors': 'Spock smashes Scissors'} }
             ],
 
             playerHand: [],
-            compHand: [],
+            compHand: null,
             winMessage: null,
             playerScore: 0,
             compScore: 0
@@ -91,11 +86,11 @@ class Game extends Component {
    }
 
    playAgain(){
-        this.setState({playerHand: this.state.hands, winMessage: null}) 
+        this.setState({playerHand: this.state.hands, compHand: null, winMessage: null}) 
    }
 
    resetGame(){
-        this.setState({playerHand: this.state.hands, winMessage: null, playerScore: 0, compScore: 0}) 
+        this.setState({playerHand: this.state.hands, compHand: null, winMessage: null, playerScore: 0, compScore: 0}) 
    }
    
 
@@ -106,25 +101,36 @@ class Game extends Component {
     
            
          <div className="game">
-
-            <PlayerHand  symbol="Rock" 
-            playerHand={this.state.playerHand} 
-            hands={this.state.hands} 
-            selectHand={this.selectHand}
-            compHand={this.state.compHand}
-            />
-            <CompHand symbol="Paper"
-            compHand={this.state.compHand}
-            />
-            <Results
-            winMessage={this.state.winMessage}
-            playerScore={this.state.playerScore}
-            compScore={this.state.compScore}
-            />
+            <div>
+                <PlayerHand
+                playerHand={this.state.playerHand} 
+                hands={this.state.hands} 
+                selectHand={this.selectHand}
+                compHand={this.state.compHand}
+                />
+            </div>
+            <div>
+                <Results
+                winMessage={this.state.winMessage}
+                />
+            </div>
+            <div>
+                <CompHand
+                compHand={this.state.compHand}
+                />
+            </div>
+        
             <div>
                 <button onClick={this.playAgain}>
-                   Play Again
-                 </button>
+                    Play Again
+                </button>
+            </div>
+
+            <div>
+                <p>Player</p>
+                <p>{this.state.playerScore}</p>
+                <p>Comp</p>
+                <p>{this.state.compScore}</p>
             </div>
             
             <div>
