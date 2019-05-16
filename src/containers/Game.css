@@ -1,0 +1,40 @@
+.game{
+    
+}
+
+.scorecard{
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 230px;
+    justify-content: space-evenly;
+    font-weight: 700;
+}
+
+.scorecard p{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.playerscore{
+    margin-left: 15px;
+    margin-top: auto;
+}
+
+.scoreboard{
+    margin: 20px;
+}
+
+.play-again{
+    margin-top: 30px;
+}
+
+
+
+.numbers{
+    font-size: 30px;
+    margin: 5px;
+}
+
+.score{
+    font-weight: 500;
+}

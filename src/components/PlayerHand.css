@@ -1,4 +1,86 @@
-.hands{
+.select-hand{  
+    display: inline-flex;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    min-width: 350px;
+    min-height: 330px;  
+    
+}
+
+.player-hand{  
+    display: inline-flex;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    width: auto;
+    height: auto;    
+}
+
+.rock{
+    display: inline-flex;
+    align-self: center;
+    min-width: 70px;
+    min-height: 70px;
+    background-color: #FFDD4A;
+    border-radius: 100%;
+}
+
+.paper{
+    align-self: flex-end;
+    justify-content: space-around; 
+    /* max-width: 60px;
+    max-height: 60px; */
+    min-width: 70px;
+    min-height: 70px;
+    background-color: #FFDD4A;
+    border-radius: 100%;
+    
+}
+
+.scissors{
+    display: inline-flex;
+    justify-content: space-between; 
+    min-width: 70px;
+    height: 70px; 
+    background-color: #FFDD4A;
+    border-radius: 100%;
+}
+
+.lizard{
+    align-self: flex-end; 
+    justify-content: space-around;
+    /* max-width: 60px;
+    max-height: 60px; */
+    min-width: 70px;
+    min-height: 70px;
+    background-color: #FFDD4A;
+    border-radius: 100%;
+
+}
+
+.spock{
+    display: inline-flex;
+    align-self: center;
+    min-width: 70px;
+    min-height: 70px;
+    background-color: #FFDD4A;
+    border-radius: 100%;
+}
+
+.hand-img{
     max-width: 50px;
-    max-height: 50px; 
- }
+    max-height: 50px;
+    /* align-self: center; */
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin: auto;
+    margin-top: 10px;
+
+}
+
+
+
+
+
+

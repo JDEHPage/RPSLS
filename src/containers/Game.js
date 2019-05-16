@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PlayerHand from '../components/PlayerHand'
 import CompHand from '../components/CompHand'
 import Results from '../components/Results'
+import './Game.css'
 
 
 class Game extends Component {
@@ -98,9 +99,11 @@ class Game extends Component {
     
     render(){
         return(
-    
-           
          <div className="game">
+            <div>
+                <p>Pic a Item</p>
+            </div>
+
             <div>
                 <PlayerHand
                 playerHand={this.state.playerHand} 
@@ -109,28 +112,33 @@ class Game extends Component {
                 compHand={this.state.compHand}
                 />
             </div>
-            <div>
+            
                 <Results
                 winMessage={this.state.winMessage}
                 />
-            </div>
-            <div>
+           
                 <CompHand
                 compHand={this.state.compHand}
                 />
-            </div>
-        
-            <div>
+         
+            <div className="play-again">
                 <button onClick={this.playAgain}>
                     Play Again
                 </button>
             </div>
 
-            <div>
-                <p>Player</p>
-                <p>{this.state.playerScore}</p>
-                <p>Comp</p>
-                <p>{this.state.compScore}</p>
+            <div className="scoreboard">
+                <div className="score">
+                    SCORE
+                </div>
+
+                <div className="scorecard">
+                    <p className="playerscore">PLAYER</p>
+                    <p className="numbers">{this.state.playerScore}</p>
+                    <p>|</p>
+                    <p className="numbers">{this.state.compScore}</p>
+                    <p>HAL 9000</p> 
+                </div>
             </div>
             
             <div>
