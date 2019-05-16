@@ -61,18 +61,18 @@ class Game extends Component {
         var message = ""
         for (const key in pHand.message) {
             if (cHand.name === key) {
-                message = pHand.message[key] 
+                message = pHand.message[key].toUpperCase()  
                 winner = "player"  
             }
         }
 
         for (const key in cHand.message) {
             if (pHand.name === key) {
-                message = cHand.message[key]  
+                message = cHand.message[key].toUpperCase()  
                 winner = "comp" 
             }
         }
-        console.log(message);
+
         this.setState({winMessage: message})
 
         if (winner === "player") {
@@ -100,18 +100,15 @@ class Game extends Component {
     render(){
         return(
          <div className="game">
-            <div>
-                <p>Pic a Item</p>
-            </div>
+  
+                <p className="intro">TEST afajkshflkh lkfadskhf</p>                
 
-            
                 <PlayerHand
                 playerHand={this.state.playerHand} 
                 hands={this.state.hands} 
                 selectHand={this.selectHand}
                 compHand={this.state.compHand}
                 />
-        
             
                 <Results
                 winMessage={this.state.winMessage}

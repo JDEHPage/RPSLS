@@ -1,5 +1,5 @@
 .game{
-    
+    justify-content: center;
 }
 
 .scorecard{
@@ -37,4 +37,6 @@
     font-weight: 500;
 }
 
+.intro{
 
+}

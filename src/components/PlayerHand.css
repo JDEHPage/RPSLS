@@ -8,7 +8,6 @@
     display: inline-flex;
 }
 
-
 .select-hand{  
     display: inline-flex;
     /* text-align: center;
@@ -35,8 +34,11 @@
     min-width: 70px;
     min-height: 70px;
     background-color: rgba(255, 221, 74, 0.8);
-    border-radius: 100%;
-    
+    border-radius: 100%;   
+}
+
+.rock:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.47), 0 17px 50px 0 rgba(0,0,0,0.29);
 }
 
 .paper{
@@ -47,8 +49,11 @@
     min-width: 70px;
     min-height: 70px;
     background-color: rgba(255, 221, 74, 0.8);
-    border-radius: 100%;
-    
+    border-radius: 100%;   
+}
+
+.paper:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.47), 0 17px 50px 0 rgba(0,0,0,0.29);
 }
 
 .scissors{
@@ -60,16 +65,21 @@
     border-radius: 100%;
 }
 
+.scissors:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.47), 0 17px 50px 0 rgba(0,0,0,0.29);
+}
+
 .lizard{
     align-self: flex-end; 
     justify-content: space-around;
-    /* max-width: 60px;
-    max-height: 60px; */
     min-width: 70px;
     min-height: 70px;
     background-color: rgba(255, 221, 74, 0.8);
     border-radius: 100%;
+}
 
+.lizard:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.47), 0 17px 50px 0 rgba(0,0,0,0.29);
 }
 
 .spock{
@@ -79,6 +89,10 @@
     min-height: 70px;
     background-color: rgba(255, 221, 74, 0.8);
     border-radius: 100%;
+}
+
+.spock:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.47), 0 17px 50px 0 rgba(0,0,0,0.29);
 }
 
 .hand-img{
