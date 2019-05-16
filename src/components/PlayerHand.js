@@ -12,8 +12,8 @@ const PlayerHand = (props) => {
 
     const allHands = props.playerHand.map((hand, index) => {
         return(
-            <div className={`${hand.name}`}>
-                <img key={index} className="hand-img" src={require(`../assets/${hand.name}.png`)} alt={hand.name} onClick={setHand.bind(this, hand)}/>
+            <div key={index} className={`${hand.name}`}>
+                <img  className="hand-img" src={require(`../assets/${hand.name}.png`)} alt={hand.name} onClick={setHand.bind(this, hand)}/>
             </div>
         ); 
       })
@@ -21,8 +21,10 @@ const PlayerHand = (props) => {
     
     if (props.playerHand.length > 1) {
         return(
-            <div className="select-hand"> 
+            <div className="pHandBox">
+                <div className="select-hand"> 
                     {allHands}
+                </div>
             </div>
         )  
     } else {

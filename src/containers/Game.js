@@ -104,14 +104,14 @@ class Game extends Component {
                 <p>Pic a Item</p>
             </div>
 
-            <div>
+            
                 <PlayerHand
                 playerHand={this.state.playerHand} 
                 hands={this.state.hands} 
                 selectHand={this.selectHand}
                 compHand={this.state.compHand}
                 />
-            </div>
+        
             
                 <Results
                 winMessage={this.state.winMessage}
