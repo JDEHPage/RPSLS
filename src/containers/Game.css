@@ -95,7 +95,7 @@
 .hal-box{
     align-self: center;
     position: relative;
-    bottom: 380px;
+    bottom: 385px;
 }
 
 .hal-talk{
@@ -125,4 +125,11 @@
 .hal-5{
     max-width: 310px;
     max-height: 310px; 
+}
+
+
+
+.loose{
+    font-size: 40px;
+    color: rgb(253, 255, 252);
 }

@@ -19,7 +19,7 @@ const PlayerHand = (props) => {
       })
 
     
-    if (props.playerHand.length > 1) {
+    if (props.playerHand.length > 1 && props.compScore < 5 && props.playerScore < 5) {
         return(
             <div className="pHandBox">
                 <div className="select-hand"> 
@@ -27,12 +27,24 @@ const PlayerHand = (props) => {
                 </div>
             </div>
         )  
-    } else {
+    } else if(props.playerHand.length === 1 && props.compScore < 5 && props.playerScore < 5) {
         return(
             <div className="player-hand"> 
                     {allHands}
             </div>
         )
+    } else if(props.playerHand.length === 1 && props.compScore > 4) {
+        return(
+            <div className="pHandBox">
+             
+            </div>
+        ) 
+    } else {
+        return(
+            <div className="win-box">
+                <p>YOU WIN!!!</p>
+            </div>
+        )  
     }
 
 

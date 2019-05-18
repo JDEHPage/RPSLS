@@ -30,8 +30,8 @@ class Game extends Component {
             compHand: null,
             winMessage: null,
             playerScore: 0,
-            compScore: 5,
-            playing: true
+            compScore: 0,
+            playing: false
             
         }
         this.selectHand = this.selectHand.bind(this) 
@@ -128,17 +128,28 @@ class Game extends Component {
                        hands={this.state.hands} 
                        selectHand={this.selectHand}
                        compHand={this.state.compHand}
+                       compScore={this.state.compScore}
+                       playerScore={this.state.playerScore}
                        />
-                   
-                       <Results
+                    {this.state.compScore < 5 && this.state.playerScore < 5 &&
+                    <>
+                        <Results
                        winMessage={this.state.winMessage}
                        />
                   
                        <CompHand
                        compHand={this.state.compHand}
                        />
+                    </>
 
-                    {this.state.playing === true && this.state.playerHand.length === 1 &&
+                    }
+                       
+
+                    {this.state.playing === true 
+                    && this.state.playerHand.length === 1 
+                    && this.state.compScore < 5
+                    && this.state.playerScore < 5
+                    &&
                     <div>
                        <button className="game-button" onClick={this.playAgain}>
                            Play Again
@@ -146,7 +157,9 @@ class Game extends Component {
                     </div>
                     }
                    
-       
+                    {this.state.compScore < 5
+                    && this.state.playerScore < 5
+                    &&
                     <div className="scoreboard">
                        <div className="score">
                            SCORE
@@ -160,7 +173,15 @@ class Game extends Component {
                            <p>HAL 9000</p> 
                        </div>
                     </div>
-                   
+                    }
+
+                    {this.state.compScore > 4
+                    &&
+                    <div className="loose">
+                           <p>YOU LOOSE...</p> 
+                    </div>
+                    }
+
                     {this.state.playing === true &&
                     <div>
                        <button className="game-button" id="reset" onClick={this.resetGame}>
@@ -197,7 +218,7 @@ class Game extends Component {
                         <img  className="hal-4" src={require("../assets/hal.png")} alt="HAL"/>
                    
                     }
-                    {this.state.compScore === 5 && this.state.playerHand.length > 1 &&
+                    {this.state.compScore === 5 &&
                  
                     <img  className="hal-5" src={require("../assets/hal.png")} alt="HAL"/>
             
