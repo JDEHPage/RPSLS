@@ -1,5 +1,7 @@
 .game{
     justify-content: center;
+    display: inline-flex;
+    flex-direction: column;
 }
 
 .scorecard{
@@ -7,16 +9,18 @@
     flex-wrap: wrap;
     width: 230px;
     justify-content: space-evenly;
-    font-weight: 700;
+    font-weight: 500;
+    color: rgb(253, 255, 252);
 }
 
 .scorecard p{
     margin-top: auto;
     margin-bottom: auto;
+    font-size: 24px;
 }
 
 .playerscore{
-    margin-left: 15px;
+    margin-left: 22px;
     margin-top: auto;
 }
 
@@ -28,15 +32,56 @@
     margin-top: 30px;
 }
 
-.numbers{
-    font-size: 30px;
+#numbers{
+    font-size: 40px;
     margin: 5px;
 }
 
 .score{
     font-weight: 500;
+    font-size: 22px;
+    color: rgb(253, 255, 252);
+}
+
+.instruct{
+    font-size: 28px;
+    font-weight: 500;
+    text-align: center;
+    width: 180px;
+    align-self: center;
+    position: relative;
+    bottom: 390px;
 }
 
 .intro{
-
+    font-size: 35px;
+    font-weight: 500;
+    text-align: center;
+    margin: 0px;
+    align-self: center;
+    position: relative;
+    color: rgb(253, 255, 252);
+    margin-top: 10px;
 }
+
+.game-button{
+    background-color: #333cb7;
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    display: inline-block;
+    font-size: 22px;
+    margin-top: 20px;
+    font-family: inherit;
+    border-radius: 10px;
+}
+
+#reset{
+    margin-top: 0px;
+}
+
+.game-button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.47), 0 17px 50px 0 rgba(0,0,0,0.29);
+}
+

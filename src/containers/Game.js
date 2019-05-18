@@ -30,13 +30,15 @@ class Game extends Component {
             compHand: null,
             winMessage: null,
             playerScore: 0,
-            compScore: 0
+            compScore: 0,
+            playing: false
             
         }
         this.selectHand = this.selectHand.bind(this) 
         this.calcWin = this.calcWin.bind(this)
         this.playAgain = this.playAgain.bind(this)
         this.resetGame = this.resetGame.bind(this)
+        this.setPlaying = this.setPlaying.bind(this)
     }
 
     componentDidMount() {
@@ -55,8 +57,6 @@ class Game extends Component {
 
 
    calcWin(pHand, cHand) {
-        // console.log(pHand.win);
-        // console.log(cHand.name);
         var winner = ""
         var message = ""
         for (const key in pHand.message) {
@@ -84,70 +84,105 @@ class Game extends Component {
                 return {compScore: prevState.compScore + 1}
              })
         }
+
+        this.setPlaying()
+
+   }
+
+   setPlaying(){
+       if(this.state.playerScore + this.state.compScore <= 1){
+           this.setState({playing: true})
+       }
    }
 
    playAgain(){
-        this.setState({playerHand: this.state.hands, compHand: null, winMessage: null}) 
+        this.setState({playerHand: this.state.hands, 
+                        compHand: null, 
+                        winMessage: null}) 
    }
 
    resetGame(){
-        this.setState({playerHand: this.state.hands, compHand: null, winMessage: null, playerScore: 0, compScore: 0}) 
+        this.setState({playerHand: this.state.hands, 
+                        compHand: null, 
+                        winMessage: null, 
+                        playerScore: 0, 
+                        compScore: 0,
+                        playing: false
+                    }) 
    }
    
 
 
     
     render(){
-        return(
-         <div className="game">
-  
-                <p className="intro">TEST afajkshflkh lkfadskhf</p>                
+        if (this.state.playerScore < 5 && this.state.compScore < 5) {
+            return(
+                <div className="game">
+                        
+                    {this.state.playing === false &&
+                        <p className="intro">WELCOME TO RPSLS</p>
+                    }
+                                         
+       
+                       <PlayerHand
+                       playerHand={this.state.playerHand} 
+                       hands={this.state.hands} 
+                       selectHand={this.selectHand}
+                       compHand={this.state.compHand}
+                       />
+                   
+                       <Results
+                       winMessage={this.state.winMessage}
+                       />
+                  
+                       <CompHand
+                       compHand={this.state.compHand}
+                       />
 
-                <PlayerHand
-                playerHand={this.state.playerHand} 
-                hands={this.state.hands} 
-                selectHand={this.selectHand}
-                compHand={this.state.compHand}
-                />
-            
-                <Results
-                winMessage={this.state.winMessage}
-                />
-           
-                <CompHand
-                compHand={this.state.compHand}
-                />
-         
-            <div className="play-again">
-                <button onClick={this.playAgain}>
-                    Play Again
-                </button>
-            </div>
+                    {this.state.playing === true && this.state.playerHand.length === 1 &&
+                    <div>
+                       <button className="game-button" onClick={this.playAgain}>
+                           Play Again
+                       </button>
+                    </div>
+                    }
+                   
+       
+                    <div className="scoreboard">
+                       <div className="score">
+                           SCORE
+                       </div>
+       
+                       <div className="scorecard">
+                           <p className="playerscore">PLAYER</p>
+                           <p id="numbers">{this.state.playerScore}</p>
+                           <p>|</p>
+                           <p id="numbers">{this.state.compScore}</p>
+                           <p>HAL 9000</p> 
+                       </div>
+                    </div>
+                   
+                    {this.state.playing === true &&
+                    <div>
+                       <button className="game-button" id="reset" onClick={this.resetGame}>
+                           Reset Game
+                       </button>
+                    </div>
+                    }
 
-            <div className="scoreboard">
-                <div className="score">
-                    SCORE
+                    {this.state.playing === false &&
+                        <p className="instruct">FIRST TO 5 POINTS WINS - SELECT YOUR TOOL</p>
+                    }
+
                 </div>
+               )
+        } 
 
-                <div className="scorecard">
-                    <p className="playerscore">PLAYER</p>
-                    <p className="numbers">{this.state.playerScore}</p>
-                    <p>|</p>
-                    <p className="numbers">{this.state.compScore}</p>
-                    <p>HAL 9000</p> 
-                </div>
-            </div>
-            
-            <div>
-                <button onClick={this.resetGame}>
-                    Reset Game
-                </button>
-            </div>
-            
 
-         </div>
+
+
         
-        )
+     
     }
 
 }
