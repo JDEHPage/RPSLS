@@ -30,8 +30,8 @@ class Game extends Component {
             compHand: null,
             winMessage: null,
             playerScore: 0,
-            compScore: 0,
-            playing: false
+            compScore: 5,
+            playing: true
             
         }
         this.selectHand = this.selectHand.bind(this) 
@@ -115,8 +115,7 @@ class Game extends Component {
 
     
     render(){
-        if (this.state.playerScore < 5 && this.state.compScore < 5) {
-            return(
+        return(
                 <div className="game">
                         
                     {this.state.playing === false &&
@@ -170,9 +169,44 @@ class Game extends Component {
                     </div>
                     }
 
+                    <div className="infobox">
                     {this.state.playing === false &&
                         <p className="instruct">FIRST TO 5 POINTS WINS - SELECT YOUR TOOL</p>
                     }
+
+                    <div className="hal-box">
+                    {this.state.compScore === 1 && this.state.playerHand.length > 1 &&
+                        <>
+                        <img  className="hal-1" src={require("../assets/hal.png")} alt="HAL"/>
+                        <p className="hal-talk">HELLO</p>
+                        </>
+                    }
+                    {this.state.compScore === 2 && this.state.playerHand.length > 1 &&
+                       
+                        <img  className="hal-2" src={require("../assets/hal.png")} alt="HAL"/>
+                        
+                    }
+                    {this.state.compScore === 3 && this.state.playerHand.length > 1 &&
+                        <>
+                        <img  className="hal-3" src={require("../assets/hal.png")} alt="HAL"/>
+                        <p className="hal-talk">CAREFUL ONLY 2 LEFT</p>
+                        </>
+                    }
+                    {this.state.compScore === 4 && this.state.playerHand.length > 1 &&
+                 
+                        <img  className="hal-4" src={require("../assets/hal.png")} alt="HAL"/>
+                   
+                    }
+                    {this.state.compScore === 5 && this.state.playerHand.length > 1 &&
+                 
+                    <img  className="hal-5" src={require("../assets/hal.png")} alt="HAL"/>
+            
+                    }
+                    
+
+                    </div>
+
+                    </div>
 
                 </div>
                )
@@ -185,5 +219,4 @@ class Game extends Component {
      
     }
 
-}
 export default Game;

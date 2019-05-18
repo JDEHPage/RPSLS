@@ -15,9 +15,5 @@
   background-size: cover;
   background-color: rgb(142, 154, 175);
   min-height: 100vh;
-
-
-  /* height: 100%; */
-  overflow: hidden;
 }
 
